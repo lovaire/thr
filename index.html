@@ -223,12 +223,12 @@ body::before{
   opacity:.72;
 }
 .prize-node[data-type="cash"] .pn-lbl{color:#f0a090;}
-.prize-node[data-type="cash"]::after{
+/* .prize-node[data-type="cash"]::after{
   content:'🔒';
   position:absolute;bottom:6%;right:8%;
   font-size:.38em;opacity:.65;
   z-index:2;
-}
+} */
 
 /* Highlight state */
 .prize-node.hl{
@@ -502,7 +502,7 @@ function buildCircle(){
   nodeEls = [];
 
   const size  = arena.offsetWidth;
-  const node  = Math.round(size * 0.175);
+  const node  = Math.round(size * 0.13);
   const orbit = size * 0.385;
   const cx    = size / 2;
   const cy    = size / 2;

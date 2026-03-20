@@ -18,7 +18,6 @@
   --gold-dk:  #b8890a;
   --gold-lt:  #ffe57a;
   --cream:    #fdf6e3;
-  --cash-col: #c0392b;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -109,35 +108,26 @@ body::before{
 /* ── Luck bar + multiplier ── */
 .luck-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
 .luck-lbl{font-size:.65rem;color:var(--g-pale);font-weight:700;text-transform:uppercase;letter-spacing:1px;}
-
 .luck-row{display:flex;align-items:center;gap:6px;}
 
 .luck-multiplier{
   font-family:'Cinzel Decorative',serif;
-  font-size:.78rem;font-weight:700;
-  color:var(--gold);
-  background:rgba(0,0,0,.35);
-  border:1.5px solid rgba(245,197,24,.5);
-  border-radius:6px;padding:1px 6px;
-  min-width:28px;text-align:center;
-  text-shadow:0 0 10px rgba(245,197,24,.6);
-  transition:all .3s;
-  line-height:1.4;
+  font-size:.78rem;font-weight:700;color:var(--gold);
+  background:rgba(0,0,0,.35);border:1.5px solid rgba(245,197,24,.5);
+  border-radius:6px;padding:1px 6px;min-width:28px;text-align:center;
+  text-shadow:0 0 10px rgba(245,197,24,.6);transition:all .3s;line-height:1.4;
 }
 .luck-multiplier.bump{animation:multiBump .4s cubic-bezier(.34,1.56,.64,1);}
 @keyframes multiBump{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
 
 .luck-track{
-  width:110px;height:16px;
-  background:rgba(0,0,0,.4);border-radius:50px;
-  border:1.5px solid rgba(37,160,80,.45);
-  overflow:hidden;position:relative;
+  width:110px;height:16px;background:rgba(0,0,0,.4);border-radius:50px;
+  border:1.5px solid rgba(37,160,80,.45);overflow:hidden;position:relative;
 }
 .luck-fill{
   height:100%;
   background:linear-gradient(90deg,var(--g-mid),var(--g-light),var(--gold-lt));
-  border-radius:50px;width:0%;
-  transition:width .65s cubic-bezier(.4,0,.2,1);
+  border-radius:50px;width:0%;transition:width .65s cubic-bezier(.4,0,.2,1);
   position:relative;overflow:hidden;
 }
 .luck-fill::after{
@@ -157,47 +147,52 @@ body::before{
 .sec-title{font-family:'Cinzel Decorative',serif;color:var(--gold);font-size:1rem;text-align:center;text-shadow:0 0 16px rgba(245,197,24,.45);}
 .sec-stars{color:var(--gold);font-size:.68rem;letter-spacing:3px;opacity:.5;}
 
-/* ══ CIRCLE ARENA ══ */
+/* ══ CIRCLE ARENA ══
+   Arena fills most of the viewport width.
+   Node size and orbit are computed in JS
+   so they always fit regardless of screen size.
+══════════════════════════════════════════ */
 .circle-arena{
   position:relative;
-  width:min(90vw,420px);
+  /* Use a CSS custom property updated by JS so we can reference it */
+  width:var(--arena-size, min(88vw, 400px));
   aspect-ratio:1;
   margin:0 auto;
+  flex-shrink:0;
 }
 
 .ring{position:absolute;border-radius:50%;border:1.5px solid;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
 .ring-1{width:100%;height:100%;border-color:rgba(245,197,24,.13);}
-.ring-2{width:80%;height:80%;border-color:rgba(37,160,80,.16);}
-.ring-3{width:60%;height:60%;border-color:rgba(245,197,24,.09);}
+.ring-2{width:78%;height:78%;border-color:rgba(37,160,80,.16);}
+.ring-3{width:54%;height:54%;border-color:rgba(245,197,24,.09);}
 
 .ring-dash{
-  position:absolute;border-radius:50%;
-  border:2px dashed rgba(245,197,24,.16);
-  top:50%;left:50%;width:90%;height:90%;
+  position:absolute;border-radius:50%;border:2px dashed rgba(245,197,24,.16);
+  top:50%;left:50%;width:89%;height:89%;
   transform:translate(-50%,-50%);
   animation:rotSlow 28s linear infinite;pointer-events:none;
 }
 @keyframes rotSlow{to{transform:translate(-50%,-50%) rotate(360deg);}}
 
 .center-piece{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:26%;aspect-ratio:1;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:22%;aspect-ratio:1;
   background:radial-gradient(circle at 35% 35%,rgba(37,160,80,.55),rgba(7,31,14,.9));
   border-radius:50%;border:2.5px solid var(--gold);
   display:flex;align-items:center;justify-content:center;
-  font-size:clamp(1.3rem,5vw,2rem);
+  font-size:clamp(1rem,4vw,1.7rem);
   box-shadow:0 0 28px rgba(245,197,24,.3),inset 0 0 18px rgba(0,0,0,.45);
-  z-index:5;
-  animation:cpGlow 3s ease-in-out infinite alternate;
-  transition:transform .08s;
+  z-index:5;animation:cpGlow 3s ease-in-out infinite alternate;
 }
 @keyframes cpGlow{
   from{box-shadow:0 0 18px rgba(245,197,24,.2),inset 0 0 15px rgba(0,0,0,.45);}
   to{box-shadow:0 0 38px rgba(245,197,24,.55),inset 0 0 18px rgba(0,0,0,.45);}
 }
 
-/* ── Prize nodes ── */
+/* ── Prize nodes ──
+   Size is set via JS. Font-size on the node itself acts as the em base.
+   pn-icon = 1.5em of node font-size, pn-lbl = 0.6em
+────────────────── */
 .prize-node{
   position:absolute;border-radius:50%;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -205,10 +200,17 @@ body::before{
   background:linear-gradient(145deg,rgba(26,107,53,.92),rgba(7,31,14,.96));
   box-shadow:0 4px 16px rgba(0,0,0,.45);
   overflow:hidden;transition:box-shadow .12s;
-  font-size: 14px;
+  /* font-size set by JS as the em base */
 }
-.prize-node .pn-icon{font-size:1.1em;line-height:1;z-index:1;}
-.prize-node .pn-lbl{font-size:.55em;font-weight:900;color:var(--gold-lt);text-align:center;z-index:1;line-height:1.2;margin-top:.18em;padding:0 .3em;}
+.prize-node .pn-icon{
+  /* fixed px size set by JS, not em, so emoji doesn't clip */
+  line-height:1;z-index:1;display:block;
+}
+.prize-node .pn-lbl{
+  font-weight:900;color:var(--gold-lt);text-align:center;
+  z-index:1;line-height:1.15;padding:0 3px;
+  /* px size set by JS */
+}
 
 /* Type colours */
 .prize-node[data-type="luck1"]  {border-color:rgba(37,160,80,.55);}
@@ -217,19 +219,12 @@ body::before{
 .prize-node[data-type="luck10"] {border-color:rgba(245,197,24,.9);}
 .prize-node[data-type="samsung"]{border-color:rgba(20,40,160,.9);background:linear-gradient(145deg,rgba(20,40,160,.35),rgba(7,31,14,.96));}
 
-/* Cash prizes – greyed out / locked look */
+/* Cash prizes – reddish tint, NO lock icon */
 .prize-node[data-type="cash"]{
-  border-color:rgba(192,57,43,.45);
-  background:linear-gradient(145deg,rgba(60,15,10,.9),rgba(7,31,14,.96));
-  opacity:.72;
+  border-color:rgba(192,57,43,.5);
+  background:linear-gradient(145deg,rgba(55,12,8,.9),rgba(7,31,14,.96));
 }
-.prize-node[data-type="cash"] .pn-lbl{color:#f0a090;}
-/* .prize-node[data-type="cash"]::after{
-  content:'🔒';
-  position:absolute;bottom:6%;right:8%;
-  font-size:.38em;opacity:.65;
-  z-index:2;
-} */
+.prize-node[data-type="cash"] .pn-lbl{color:#f5b0a0;}
 
 /* Highlight state */
 .prize-node.hl{
@@ -302,8 +297,7 @@ body::before{
   border:2px solid var(--gold);border-radius:22px;
   padding:2.2rem 1.8rem 1.8rem;max-width:340px;width:100%;text-align:center;
   box-shadow:0 0 60px rgba(245,197,24,.22),0 30px 80px rgba(0,0,0,.7);
-  animation:popIn .42s cubic-bezier(.34,1.56,.64,1);
-  position:relative;
+  animation:popIn .42s cubic-bezier(.34,1.56,.64,1);position:relative;
 }
 @keyframes popIn{from{opacity:0;transform:scale(.55) rotate(-4deg);}to{opacity:1;transform:scale(1) rotate(0deg);}}
 
@@ -314,37 +308,32 @@ body::before{
 .pop-icon{font-size:3.2rem;display:block;margin:.4rem 0;}
 .pop-name{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:.25rem;}
 .pop-name span{color:var(--gold-lt);}
-.pop-desc{font-size:.82rem;color:var(--g-pale);margin-bottom:1rem;}
+.pop-desc{font-size:.82rem;color:var(--g-pale);margin-bottom:.8rem;}
 
-/* Luck level-up badge inside popup */
 .luck-level-badge{
-  display:inline-block;
-  margin:.3rem auto .8rem;
-  font-family:'Cinzel Decorative',serif;
-  font-size:.82rem;
+  display:inline-block;margin:.3rem auto .8rem;
+  font-family:'Cinzel Decorative',serif;font-size:.78rem;
   background:linear-gradient(135deg,rgba(245,197,24,.18),rgba(245,197,24,.05));
-  border:1.5px solid rgba(245,197,24,.5);
-  border-radius:8px;padding:.3rem .9rem;
-  color:var(--gold-lt);letter-spacing:.5px;
+  border:1.5px solid rgba(245,197,24,.5);border-radius:8px;
+  padding:.3rem .9rem;color:var(--gold-lt);letter-spacing:.5px;
 }
 
-.pop-phone{
-  width:100px;height:170px;margin:.6rem auto;
-  background:linear-gradient(150deg,#1428a0,#080f50);
+/* Samsung popup image from picsum */
+.pop-phone-img{
+  width:110px;height:185px;margin:.5rem auto .8rem;
   border-radius:18px;border:2.5px solid rgba(255,255,255,.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:3rem;position:relative;
+  object-fit:cover;display:block;
   box-shadow:0 10px 40px rgba(20,40,160,.55);
+  background:#111;
 }
-.pop-phone-badge{
-  position:absolute;bottom:-10px;background:#1428a0;color:#fff;
-  font-size:.6rem;font-weight:900;padding:2px 8px;border-radius:50px;letter-spacing:1px;
+.pop-phone-caption{
+  font-size:.7rem;color:rgba(255,255,255,.45);margin-bottom:.5rem;
 }
 
 .pop-btns{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:.8rem;}
 
 .btn-ok{
-  padding:.65rem 2.2rem;border-radius:50px;border:none;
+  padding:.65rem 2rem;border-radius:50px;border:none;
   background:linear-gradient(135deg,var(--gold),#c8960a);
   color:var(--g-deep);font-size:.95rem;font-weight:900;font-family:'Nunito',sans-serif;
   cursor:pointer;transition:all .2s;
@@ -372,8 +361,8 @@ body::before{
 </head>
 <body>
 
-<!-- Particles -->
 <script>
+/* Floating particles */
 (function(){
   const cols=['#25a050','#f5c518','#4dd878','#ffe57a','#a6f5c2'];
   for(let i=0;i<18;i++){
@@ -450,9 +439,9 @@ body::before{
     <div class="pop-name"   id="popName">Hadiah</div>
     <div class="pop-desc"   id="popDesc">Hadiah berhasil didapat!</div>
     <div class="luck-level-badge" id="luckLevelBadge" style="display:none;"></div>
-    <div class="pop-phone"  id="popPhone" style="display:none;">
-      📱<span class="pop-phone-badge">SAMSUNG A17</span>
-    </div>
+    <!-- Samsung image (picsum) -->
+    <img id="popPhoneImg" class="pop-phone-img" src="" alt="Samsung Galaxy A17" style="display:none;" crossorigin="anonymous">
+    <div class="pop-phone-caption" id="popPhoneCaption" style="display:none;">📱 Samsung Galaxy A17</div>
     <div class="pop-btns">
       <button class="btn-dl" id="btnDl" style="display:none;" onclick="downloadPhone()">⬇ Download</button>
       <button class="btn-ok" onclick="closePopup()">OK 👍</button>
@@ -463,201 +452,241 @@ body::before{
 <div class="cf-box" id="cfBox"></div>
 
 <script>
-/* ─────────────────────────────────────────
+/* ══════════════════════════════════════════
    PRIZE DATA
-   12 nodes total in the circle:
-   • 4 cash prizes  (0% prob, displayed as locked)
-   • 3 luck+1       (40% total)
-   • 2 luck+2       (30% total)
-   • 1 luck+5       (15%)
-   • 1 luck+10      (10%)
-   • 1 samsung      (5%)
-───────────────────────────────────────── */
+   12 nodes around the circle:
+   • 4 cash  (weight 0 – always visible, never wins)
+   • 3 luck+1  → 40%
+   • 2 luck+2  → 30%
+   • 1 luck+5  → 15%
+   • 1 luck+10 → 10%
+   • 1 samsung → 5%
+══════════════════════════════════════════ */
 const PRIZES = [
-  // cash (weight 0 = never wins, but appears in circle)
-  { type:'cash',    icon:'💵', label:'Rp10.000',  value:0,  weight:0 },
-  { type:'cash',    icon:'💵', label:'Rp20.000',  value:0,  weight:0 },
-  { type:'cash',    icon:'💵', label:'Rp50.000',  value:0,  weight:0 },
-  { type:'cash',    icon:'💵', label:'Rp100.000', value:0,  weight:0 },
-  // luck
-  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',     value:1,  weight:14 },
-  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',     value:1,  weight:13 },
-  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',     value:1,  weight:13 },
-  { type:'luck2',   icon:'🌟', label:'LUCK\n+2',     value:2,  weight:15 },
-  { type:'luck2',   icon:'🌟', label:'LUCK\n+2',     value:2,  weight:15 },
-  { type:'luck5',   icon:'⭐', label:'LUCK\n+5',     value:5,  weight:15 },
-  { type:'luck10',  icon:'💫', label:'LUCK\n+10',    value:10, weight:10 },
-  { type:'samsung', icon:'📱', label:'Samsung\nA17', value:0,  weight:5  },
+  { type:'cash',    icon:'💵', label:'Rp\n10.000',  value:0,  weight:0  },
+  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',    value:1,  weight:14 },
+  { type:'luck2',   icon:'🌟', label:'LUCK\n+2',    value:2,  weight:15 },
+  { type:'cash',    icon:'💵', label:'Rp\n20.000',  value:0,  weight:0  },
+  { type:'luck5',   icon:'⭐', label:'LUCK\n+5',    value:5,  weight:15 },
+  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',    value:1,  weight:13 },
+  { type:'samsung', icon:'📱', label:'Samsung\nA17',value:0,  weight:5  },
+  { type:'luck10',  icon:'💫', label:'LUCK\n+10',   value:10, weight:10 },
+  { type:'cash',    icon:'💵', label:'Rp\n50.000',  value:0,  weight:0  },
+  { type:'luck2',   icon:'🌟', label:'LUCK\n+2',    value:2,  weight:15 },
+  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',    value:1,  weight:13 },
+  { type:'cash',    icon:'💵', label:'Rp\n100.000', value:0,  weight:0  },
 ];
 const N = PRIZES.length; // 12
 
-let luckValue    = 0;   // raw accumulated luck points
-let luckMulti    = 1;   // current multiplier (1 per 10 points)
-let isSpinning   = false;
-let nodeEls      = [];
+let luckValue  = 0;
+let luckMulti  = 1;
+let isSpinning = false;
+let nodeEls    = [];
 
-/* ─── BUILD CIRCLE ─── */
+/* ══ COMPUTE LAYOUT ══
+   Call every time the arena is rendered or resized.
+   We calculate node diameter and orbit radius such that
+   neighbouring nodes never overlap.
+══════════════════════ */
 function buildCircle(){
   const arena = document.getElementById('arena');
   arena.querySelectorAll('.prize-node').forEach(n=>n.remove());
   nodeEls = [];
 
-  const size  = arena.offsetWidth;
-  const node  = Math.round(size * 0.13);
-  const orbit = size * 0.34;
-  const cx    = size / 2;
-  const cy    = size / 2;
+  const S = arena.offsetWidth;          // arena square side length
+  if(S < 10) return;                    // not ready yet
 
-  PRIZES.forEach((p,i)=>{
-    const angle = (2*Math.PI*i/N) - Math.PI/2;
-    const x = cx + orbit*Math.cos(angle);
-    const y = cy + orbit*Math.sin(angle);
+  /* Maximum node diameter so nodes don't touch:
+     chord between adjacent nodes = 2 * orbit * sin(π/N)
+     We want node_diameter ≤ chord * 0.88 (8.8% gap)          */
+  const orbitFrac = 0.40;              // orbit = 40% of half-arena
+  const orbit  = S * orbitFrac;
+  const chord  = 2 * orbit * Math.sin(Math.PI / N);
+  const node   = Math.floor(chord * 0.86);  // node diameter in px
+
+  const cx = S / 2;
+  const cy = S / 2;
+
+  /* Icon and label sizes derived from node diameter */
+  const iconPx  = Math.round(node * 0.42);
+  const labelPx = Math.round(node * 0.19);
+
+  PRIZES.forEach((p, i) => {
+    const angle = (2 * Math.PI * i / N) - Math.PI / 2;
+    const x = cx + orbit * Math.cos(angle);
+    const y = cy + orbit * Math.sin(angle);
 
     const el = document.createElement('div');
     el.className    = 'prize-node';
     el.dataset.type = p.type;
     el.dataset.idx  = i;
-    el.style.cssText = `width:${node}px;height:${node}px;left:${x}px;top:${y}px;transform:translate(-50%,-50%);`;
+    el.style.cssText = [
+      `width:${node}px`,
+      `height:${node}px`,
+      `left:${x}px`,
+      `top:${y}px`,
+      `transform:translate(-50%,-50%)`,
+    ].join(';');
 
     const lines = p.label.split('\n');
-    el.innerHTML = `<span class="pn-icon">${p.icon}</span><span class="pn-lbl">${lines.join('<br>')}</span>`;
+    el.innerHTML =
+      `<span class="pn-icon" style="font-size:${iconPx}px">${p.icon}</span>` +
+      `<span class="pn-lbl"  style="font-size:${labelPx}px">${lines.join('<br>')}</span>`;
+
     arena.appendChild(el);
     nodeEls.push(el);
   });
 }
 
-/* ─── HARDCODED TICKER DATA (cash winners) ─── */
+/* ══ TICKER – hardcoded cash winners ══ */
 const TICKER_ITEMS = [
-  { name:'Bxdi Sxntoso',    prize:'Rp 100.000' },
-  { name:'Sxti Rxhmawati',  prize:'Rp 50.000'  },
-  { name:'Axmad Fxuzi',     prize:'Rp 100.000' },
-  { name:'Dxwi Pxrmata',    prize:'Rp 20.000'  },
-  { name:'Rxzki Hxdayat',   prize:'Rp 100.000' },
-  { name:'Fxtimah Nxr',     prize:'Rp 50.000'  },
-  { name:'Hxndra Gxnawan',  prize:'Rp 10.000'  },
-  { name:'Nxrul Axsyah',    prize:'Rp 100.000' },
-  { name:'Axdi Pxrkasa',    prize:'Rp 50.000'  },
-  { name:'Rxhma Dxwanti',   prize:'Rp 20.000'  },
-  { name:'Wxhyu Sxtiawan',  prize:'Rp 100.000' },
-  { name:'Axu Lxstari',     prize:'Rp 10.000'  },
-  { name:'Dxni Kxrniawan',  prize:'Rp 50.000'  },
-  { name:'Bxgas Pxrnomo',   prize:'Rp 100.000' },
-  { name:'Lxna Mxrdianti',  prize:'Rp 20.000'  },
+  { name:'Bxdi Sxntoso',   prize:'Rp 100.000' },
+  { name:'Sxti Rxhmawati', prize:'Rp 50.000'  },
+  { name:'Axmad Fxuzi',    prize:'Rp 100.000' },
+  { name:'Dxwi Pxrmata',   prize:'Rp 20.000'  },
+  { name:'Rxzki Hxdayat',  prize:'Rp 100.000' },
+  { name:'Fxtimah Nxr',    prize:'Rp 50.000'  },
+  { name:'Hxndra Gxnawan', prize:'Rp 10.000'  },
+  { name:'Nxrul Axsyah',   prize:'Rp 100.000' },
+  { name:'Axdi Pxrkasa',   prize:'Rp 50.000'  },
+  { name:'Rxhma Dxwanti',  prize:'Rp 20.000'  },
+  { name:'Wxhyu Sxtiawan', prize:'Rp 100.000' },
+  { name:'Axu Lxstari',    prize:'Rp 10.000'  },
+  { name:'Dxni Kxrniawan', prize:'Rp 50.000'  },
+  { name:'Bxgas Pxrnomo',  prize:'Rp 100.000' },
+  { name:'Lxna Mxrdianti', prize:'Rp 20.000'  },
 ];
 
 function buildTicker(){
-  const doubled = [...TICKER_ITEMS,...TICKER_ITEMS];
-  document.getElementById('tickerInner').innerHTML = doubled.map(it=>
+  const doubled = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  document.getElementById('tickerInner').innerHTML = doubled.map(it =>
     `<span class="t-item">🎉 Selamat <span class="t-name">${it.name}</span> mendapatkan <span class="t-prize">${it.prize}</span></span><span class="t-sep">|</span>`
   ).join('');
 }
 
-/* ─── START GAME ─── */
+/* ══ START GAME ══ */
 function startGame(){
   const v = document.getElementById('nameInput').value.trim();
   if(!v){
-    const inp=document.getElementById('nameInput');
-    inp.focus();inp.style.borderColor='#e74c3c';
-    setTimeout(()=>inp.style.borderColor='',1100);
+    const inp = document.getElementById('nameInput');
+    inp.focus(); inp.style.borderColor = '#e74c3c';
+    setTimeout(() => inp.style.borderColor = '', 1100);
     return;
   }
   document.getElementById('displayName').textContent = v;
   document.getElementById('nameScreen').classList.remove('active');
   document.getElementById('mainScreen').classList.add('active');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{buildCircle();buildTicker();}));
+  /* Wait two frames so the arena has a real offsetWidth */
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    buildCircle();
+    buildTicker();
+  }));
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('nameInput').addEventListener('keydown',e=>{if(e.key==='Enter')startGame();});
-  window.addEventListener('resize',()=>{
-    if(document.getElementById('mainScreen').classList.contains('active')) buildCircle();
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('nameInput').addEventListener('keydown', e => {
+    if(e.key === 'Enter') startGame();
+  });
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if(document.getElementById('mainScreen').classList.contains('active')) buildCircle();
+    }, 120);
   });
 });
 
-/* ─── LUCK BAR + MULTIPLIER ─── */
+/* ══ LUCK BAR + MULTIPLIER ══ */
 function updateLuck(add){
   const prevMulti = Math.floor(luckValue / 10) + 1;
   luckValue += add;
   const newMulti  = Math.floor(luckValue / 10) + 1;
 
-  // Bar shows progress within current group of 10
   const withinGroup = luckValue % 10;
-  const pct = withinGroup === 0 && luckValue > 0 ? 100 : (withinGroup / 10) * 100;
+  const pct = (withinGroup === 0 && luckValue > 0) ? 100 : (withinGroup / 10) * 100;
 
   document.getElementById('luckFill').style.width = pct + '%';
   document.getElementById('luckNum').textContent  = luckValue;
-
   luckMulti = newMulti;
+
   const multiEl = document.getElementById('luckMulti');
   multiEl.textContent = 'x' + luckMulti;
 
   if(newMulti > prevMulti){
-    // Level-up flash
     multiEl.classList.remove('bump');
-    void multiEl.offsetWidth; // reflow
+    void multiEl.offsetWidth;
     multiEl.classList.add('bump');
     multiEl.style.color = '#fff';
     multiEl.style.borderColor = 'rgba(255,255,255,.8)';
-    setTimeout(()=>{
-      multiEl.style.color = '';
-      multiEl.style.borderColor = '';
-    }, 800);
+    setTimeout(() => { multiEl.style.color=''; multiEl.style.borderColor=''; }, 800);
   }
 }
 
-/* ─── WEIGHTED PICK (excludes weight-0) ─── */
+/* ══ WEIGHTED PICK (ignores weight-0 entries) ══ */
 function pickWinner(){
-  const total = PRIZES.reduce((s,p)=>s+p.weight, 0);
+  const total = PRIZES.reduce((s,p) => s + p.weight, 0);
   let r = Math.random() * total;
-  for(let i=0;i<N;i++){ r-=PRIZES[i].weight; if(r<=0) return i; }
-  // fallback: first non-zero weight
-  return PRIZES.findIndex(p=>p.weight>0);
+  for(let i = 0; i < N; i++){
+    r -= PRIZES[i].weight;
+    if(r <= 0) return i;
+  }
+  return PRIZES.findIndex(p => p.weight > 0);
 }
 
-/* ─── SPIN ─── */
+/* ══ SPIN ══ */
 function doSpin(){
   if(isSpinning) return;
   isSpinning = true;
   document.getElementById('spinBtn').disabled = true;
 
   const winner = pickWinner();
-  nodeEls.forEach(n=>n.classList.remove('hl','winner'));
+  nodeEls.forEach(n => n.classList.remove('hl','winner'));
 
-  // Center spin
+  /* Center piece spins while animation runs */
   const cp = document.getElementById('centerPiece');
   cp.style.animation = 'none';
   let ang = 0;
-  const cpTick = setInterval(()=>{ ang+=20; cp.style.transform=`translate(-50%,-50%) rotate(${ang}deg)`; }, 30);
+  const cpTick = setInterval(() => {
+    ang += 20;
+    cp.style.transform = `translate(-50%,-50%) rotate(${ang}deg)`;
+  }, 30);
 
-  // 2-3 full laps then land on winner
-  const laps = 2 + Math.floor(Math.random()*2);
+  /* 2-3 full laps then land exactly on winner */
+  const laps = 2 + Math.floor(Math.random() * 2);
   const stepsToWinner = ((winner - 0) + N) % N;
-  const totalSteps = laps*N + stepsToWinner + 1;
+  const totalSteps = laps * N + stepsToWinner + 1;
 
-  function delay(step){ return 55 + 360*Math.pow(step/totalSteps, 2.4); }
+  /* Delay curve: fast start (~55 ms) → slow end (~415 ms) */
+  function delay(step){ return 55 + 360 * Math.pow(step / totalSteps, 2.4); }
 
   let step = 0;
   function tick(){
-    nodeEls.forEach(n=>n.classList.remove('hl'));
+    nodeEls.forEach(n => n.classList.remove('hl'));
     nodeEls[step % N].classList.add('hl');
     step++;
     if(step < totalSteps){
       setTimeout(tick, delay(step));
     } else {
-      nodeEls.forEach(n=>n.classList.remove('hl'));
+      nodeEls.forEach(n => n.classList.remove('hl'));
       nodeEls[winner].classList.add('winner');
       clearInterval(cpTick);
       cp.style.animation = 'cpGlow 3s ease-in-out infinite alternate';
       cp.style.transform  = 'translate(-50%,-50%)';
-      setTimeout(()=>showResult(winner), 650);
+      setTimeout(() => showResult(winner), 650);
     }
   }
   setTimeout(tick, 180);
 }
 
-/* ─── RESULT POPUP ─── */
+/* ══ PICSUM IMAGE FOR SAMSUNG ══
+   We use a consistent seed (42) so the same nice photo
+   always appears for the Samsung prize.
+   crossOrigin is set on the <img> tag already.         */
+const PICSUM_URL = 'https://picsum.photos/seed/samsung2025/300/500';
+
+/* ══ RESULT POPUP ══ */
 function showResult(idx){
-  const p    = PRIZES[idx];
+  const p      = PRIZES[idx];
   const isSam  = p.type === 'samsung';
   const isLuck = p.type.startsWith('luck');
 
@@ -674,65 +703,101 @@ function showResult(idx){
     ? 'Luar biasa! Kamu memenangkan hadiah utama!'
     : isLuck
       ? `Luck kamu bertambah +${p.value} poin!`
-      : 'Sayang sekali, hadiah ini sedang terkunci.';
+      : 'Hadiah ini sedang dalam mode tersembunyi 🎭';
 
-  // Luck level badge
+  /* Luck badge */
   const badge = document.getElementById('luckLevelBadge');
   if(isLuck){
-    // apply luck first so multiplier is updated
     updateLuck(p.value);
-    const newMulti = Math.floor(luckValue/10)+1;
-    badge.textContent = `⭐ Luck kamu sekarang: ${luckValue} poin  (x${newMulti})`;
+    badge.textContent = `⭐ Total Luck: ${luckValue} poin  (x${Math.floor(luckValue/10)+1})`;
     badge.style.display = 'inline-block';
   } else {
     badge.style.display = 'none';
   }
 
-  document.getElementById('popPhone').style.display = isSam ? 'flex' : 'none';
-  document.getElementById('btnDl').style.display    = isSam ? 'inline-block' : 'none';
+  /* Samsung phone image from picsum */
+  const phoneImg     = document.getElementById('popPhoneImg');
+  const phoneCaption = document.getElementById('popPhoneCaption');
+  const btnDl        = document.getElementById('btnDl');
 
-  if(isSam) launchConfetti();
+  if(isSam){
+    phoneImg.src            = PICSUM_URL;
+    phoneImg.style.display  = 'block';
+    phoneCaption.style.display = 'block';
+    btnDl.style.display     = 'inline-block';
+    launchConfetti();
+  } else {
+    phoneImg.style.display     = 'none';
+    phoneCaption.style.display = 'none';
+    btnDl.style.display        = 'none';
+  }
 
   document.getElementById('popOverlay').classList.add('active');
 }
 
 function closePopup(){
   document.getElementById('popOverlay').classList.remove('active');
-  nodeEls.forEach(n=>n.classList.remove('winner','hl'));
+  nodeEls.forEach(n => n.classList.remove('winner','hl'));
   isSpinning = false;
   document.getElementById('spinBtn').disabled = false;
 }
 
-/* ─── DOWNLOAD PHONE ─── */
+/* ══ DOWNLOAD – draw picsum img onto canvas then save ══ */
 function downloadPhone(){
-  const c=document.createElement('canvas');c.width=400;c.height=700;
-  const x=c.getContext('2d');
-  const g=x.createLinearGradient(0,0,400,700);g.addColorStop(0,'#1428a0');g.addColorStop(1,'#060c4a');
-  x.fillStyle=g;x.beginPath();x.roundRect(0,0,400,700,44);x.fill();
-  x.strokeStyle='rgba(255,255,255,.22)';x.lineWidth=5;x.beginPath();x.roundRect(12,12,376,676,36);x.stroke();
-  x.fillStyle='#05080f';x.beginPath();x.roundRect(30,80,340,520,20);x.fill();
-  const sg=x.createLinearGradient(30,80,30,600);sg.addColorStop(0,'rgba(20,40,160,.45)');sg.addColorStop(1,'rgba(4,6,30,.8)');
-  x.fillStyle=sg;x.beginPath();x.roundRect(30,80,340,520,20);x.fill();
-  x.font='130px serif';x.textAlign='center';x.fillText('📱',200,385);
-  x.fillStyle='#fff';x.font='bold 34px Arial';x.fillText('SAMSUNG',200,620);
-  x.fillStyle='rgba(255,255,255,.6)';x.font='22px Arial';x.fillText('Galaxy A17',200,655);
-  x.fillStyle='rgba(255,255,255,.16)';x.beginPath();x.arc(200,48,14,0,Math.PI*2);x.fill();
-  x.fillStyle='rgba(255,255,255,.48)';x.beginPath();x.arc(200,48,7,0,Math.PI*2);x.fill();
-  x.fillStyle='#090c20';x.beginPath();x.arc(200,48,4,0,Math.PI*2);x.fill();
-  x.fillStyle='rgba(255,255,255,.28)';x.beginPath();x.roundRect(148,670,104,6,5);x.fill();
-  const a=document.createElement('a');a.download='Samsung_Galaxy_A17.png';a.href=c.toDataURL('image/png');a.click();
+  const img = document.getElementById('popPhoneImg');
+
+  function doDownload(src){
+    const canvas = document.createElement('canvas');
+    canvas.width  = 300;
+    canvas.height = 500;
+    const ctx = canvas.getContext('2d');
+
+    const tmp = new Image();
+    tmp.crossOrigin = 'anonymous';
+    tmp.onload = function(){
+      ctx.drawImage(tmp, 0, 0, 300, 500);
+      /* Overlay label */
+      ctx.fillStyle = 'rgba(0,0,0,.45)';
+      ctx.fillRect(0, 430, 300, 70);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 20px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('Samsung Galaxy A17', 150, 460);
+      ctx.fillStyle = 'rgba(255,255,255,.65)';
+      ctx.font = '14px Arial';
+      ctx.fillText('Hadiah THR Lebaran 2025 🎉', 150, 488);
+
+      const a = document.createElement('a');
+      a.download = 'Samsung_Galaxy_A17_THR2025.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    };
+    tmp.onerror = function(){
+      /* Fallback: just open the picsum URL in a new tab */
+      window.open(PICSUM_URL, '_blank');
+    };
+    tmp.src = src;
+  }
+
+  /* If image already loaded, use its currentSrc; else fetch direct */
+  if(img.complete && img.naturalWidth > 0){
+    doDownload(img.currentSrc || PICSUM_URL);
+  } else {
+    doDownload(PICSUM_URL);
+  }
 }
 
-/* ─── CONFETTI ─── */
+/* ══ CONFETTI ══ */
 function launchConfetti(){
-  const box=document.getElementById('cfBox');
-  const cols=['#f5c518','#25a050','#e74c3c','#3498db','#e67e22','#9b59b6','#fff','#4dd878'];
-  for(let i=0;i<80;i++){
-    const el=document.createElement('div');el.className='cf';
-    const s=6+Math.random()*10;
-    el.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;background:${cols[i%cols.length]};border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${1.6+Math.random()*2.2}s;animation-delay:${Math.random()*.9}s;`;
+  const box  = document.getElementById('cfBox');
+  const cols = ['#f5c518','#25a050','#e74c3c','#3498db','#e67e22','#9b59b6','#fff','#4dd878'];
+  for(let i = 0; i < 90; i++){
+    const el = document.createElement('div');
+    el.className = 'cf';
+    const s = 6 + Math.random() * 10;
+    el.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}vw;background:${cols[i%cols.length]};border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${1.6+Math.random()*2.2}s;animation-delay:${Math.random()*.9}s;`;
     box.appendChild(el);
-    setTimeout(()=>el.remove(),4500);
+    setTimeout(() => el.remove(), 4500);
   }
 }
 </script>

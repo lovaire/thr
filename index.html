@@ -3,994 +3,735 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌙 THR Lebaran Gacha 2025</title>
+<title>🏮 THR Lebaran Gacha 2025</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap');
 
-  :root {
-    --green-deep: #0d3a1e;
-    --green-dark: #145228;
-    --green-mid: #1e7a40;
-    --green-bright: #27ae60;
-    --green-light: #52c97a;
-    --green-pale: #a8f0c0;
-    --gold: #f5c518;
-    --gold-dark: #c8960a;
-    --gold-light: #ffe066;
-    --cream: #fdf8e8;
-    --white: #ffffff;
-    --luck-color: #27ae60;
-    --samsung-color: #1428a0;
-  }
+:root {
+  --g-deep:   #071f0e;
+  --g-dark:   #0e3b1c;
+  --g-mid:    #1a6b35;
+  --g-bright: #25a050;
+  --g-light:  #4dd878;
+  --g-pale:   #a6f5c2;
+  --gold:     #f5c518;
+  --gold-dk:  #b8890a;
+  --gold-lt:  #ffe57a;
+  --cream:    #fdf6e3;
+  --cash-col: #c0392b;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-  body {
-    font-family: 'Nunito', sans-serif;
-    background: var(--green-deep);
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-  }
+body {
+  font-family:'Nunito',sans-serif;
+  background:var(--g-deep);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 15%,rgba(37,160,80,.18) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 85%,rgba(245,197,24,.10) 0%,transparent 55%);
+  pointer-events:none;z-index:0;
+}
 
-  /* Decorative background pattern */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(ellipse at 20% 20%, rgba(39,174,96,0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(245,197,24,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(21,82,40,0.5) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+.ptcl{position:fixed;border-radius:50%;pointer-events:none;z-index:0;opacity:0;animation:floatUp linear infinite;}
+@keyframes floatUp{0%{transform:translateY(110vh) scale(.5);opacity:0;}10%{opacity:.5;}90%{opacity:.25;}100%{transform:translateY(-10vh) scale(1.2);opacity:0;}}
 
-  /* Floating lanterns */
-  .lantern {
-    position: fixed;
-    font-size: 2rem;
-    animation: floatLantern linear infinite;
-    opacity: 0.3;
-    pointer-events: none;
-    z-index: 0;
-  }
-  @keyframes floatLantern {
-    0% { transform: translateY(100vh) rotate(-10deg); opacity: 0; }
-    10% { opacity: 0.3; }
-    90% { opacity: 0.3; }
-    100% { transform: translateY(-20vh) rotate(10deg); opacity: 0; }
-  }
+.screen{display:none;position:relative;z-index:1;}
+.screen.active{display:flex;}
 
-  /* ===== SCREEN MANAGEMENT ===== */
-  .screen { display: none; position: relative; z-index: 1; }
-  .screen.active { display: flex; }
+/* ══ NAME SCREEN ══ */
+#nameScreen{min-height:100vh;align-items:center;justify-content:center;flex-direction:column;padding:1.5rem;}
 
-  /* ===== NAME FORM SCREEN ===== */
-  #nameScreen {
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 2rem;
-  }
+.form-card{
+  background:linear-gradient(150deg,rgba(26,107,53,.97),rgba(7,31,14,.99));
+  border:2px solid var(--gold);border-radius:28px;
+  padding:2.8rem 2.2rem 2.4rem;max-width:420px;width:100%;text-align:center;
+  box-shadow:0 0 0 1px rgba(245,197,24,.12),0 0 60px rgba(245,197,24,.15),0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07);
+  animation:cardIn .65s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(40px) scale(.88);}to{opacity:1;transform:translateY(0) scale(1);}}
 
-  .form-card {
-    background: linear-gradient(145deg, rgba(20,82,40,0.95), rgba(13,58,30,0.98));
-    border: 2px solid var(--gold);
-    border-radius: 24px;
-    padding: 3rem 2.5rem;
-    max-width: 440px;
-    width: 100%;
-    text-align: center;
-    box-shadow:
-      0 0 60px rgba(245,197,24,0.15),
-      0 20px 60px rgba(0,0,0,0.5),
-      inset 0 1px 0 rgba(255,255,255,0.1);
-    animation: cardEntrance 0.6s ease-out;
-  }
-  @keyframes cardEntrance {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
+.form-logo{font-size:3.8rem;display:block;animation:sway 3s ease-in-out infinite;}
+@keyframes sway{0%,100%{transform:rotate(-8deg) scale(1);}50%{transform:rotate(8deg) scale(1.08);}}
 
-  .form-card .logo {
-    font-size: 4rem;
-    margin-bottom: 0.5rem;
-    display: block;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+.form-card h1{font-family:'Cinzel Decorative',serif;color:var(--gold);font-size:1.55rem;margin:.5rem 0 .3rem;text-shadow:0 0 24px rgba(245,197,24,.55);}
+.form-card p{color:var(--g-pale);font-size:.9rem;margin-bottom:1.8rem;line-height:1.55;}
 
-  .form-card h1 {
-    font-family: 'Cinzel Decorative', serif;
-    color: var(--gold);
-    font-size: 1.6rem;
-    margin-bottom: 0.3rem;
-    text-shadow: 0 0 20px rgba(245,197,24,0.5);
-  }
+.form-card input{
+  width:100%;padding:.85rem 1.2rem;border-radius:14px;
+  border:2px solid rgba(245,197,24,.35);background:rgba(0,0,0,.32);
+  color:#fff;font-size:1.05rem;font-family:'Nunito',sans-serif;font-weight:700;
+  text-align:center;outline:none;transition:border-color .3s,box-shadow .3s;
+  margin-bottom:1.1rem;letter-spacing:.5px;
+}
+.form-card input::placeholder{color:rgba(255,255,255,.3);font-weight:400;}
+.form-card input:focus{border-color:var(--gold);box-shadow:0 0 22px rgba(245,197,24,.3);}
 
-  .form-card p {
-    color: var(--green-pale);
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-    opacity: 0.85;
-  }
+.btn-start{
+  width:100%;padding:.9rem;border-radius:14px;border:none;
+  background:linear-gradient(135deg,var(--gold),#d4a017);
+  color:var(--g-deep);font-size:1.08rem;font-family:'Nunito',sans-serif;font-weight:900;
+  cursor:pointer;letter-spacing:.5px;box-shadow:0 5px 24px rgba(245,197,24,.42);
+  transition:all .22s;position:relative;overflow:hidden;
+}
+.btn-start::after{content:'';position:absolute;top:0;left:-80%;width:60%;height:100%;background:rgba(255,255,255,.28);transform:skewX(-20deg);animation:shine 2.4s ease-in-out infinite;}
+@keyframes shine{0%,100%{left:-80%}50%{left:130%}}
+.btn-start:hover{transform:translateY(-3px);box-shadow:0 10px 34px rgba(245,197,24,.5);}
+.btn-start:active{transform:translateY(0);}
 
-  .form-card input {
-    width: 100%;
-    padding: 0.9rem 1.2rem;
-    border-radius: 12px;
-    border: 2px solid rgba(245,197,24,0.4);
-    background: rgba(0,0,0,0.3);
-    color: var(--white);
-    font-size: 1.1rem;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    text-align: center;
-    margin-bottom: 1.2rem;
-  }
-  .form-card input::placeholder { color: rgba(255,255,255,0.35); font-weight: 400; }
-  .form-card input:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 20px rgba(245,197,24,0.3);
-  }
+/* ══ MAIN SCREEN ══ */
+#mainScreen{min-height:100vh;flex-direction:column;}
 
-  .btn-primary {
-    width: 100%;
-    padding: 0.9rem;
-    border-radius: 12px;
-    border: none;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: var(--green-deep);
-    font-size: 1.1rem;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 20px rgba(245,197,24,0.4);
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,197,24,0.5); }
-  .btn-primary:active { transform: translateY(0); }
+/* ── Header ── */
+.header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.7rem 1rem;
+  background:linear-gradient(90deg,rgba(7,31,14,.97),rgba(14,59,28,.95));
+  border-bottom:2px solid rgba(245,197,24,.22);
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 4px 24px rgba(0,0,0,.45);
+}
 
-  /* ===== MAIN SCREEN ===== */
-  #mainScreen {
-    min-height: 100vh;
-    flex-direction: column;
-    align-items: stretch;
-  }
+.user-badge{
+  display:flex;align-items:center;gap:.45rem;
+  background:rgba(0,0,0,.28);border:1.5px solid rgba(245,197,24,.28);
+  border-radius:50px;padding:.35rem .85rem;max-width:175px;
+}
+.user-badge .av{font-size:1.1rem;}
+.user-badge .uname{color:var(--gold-lt);font-weight:800;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
-  /* Header */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 1.2rem;
-    background: linear-gradient(90deg, rgba(13,58,30,0.98), rgba(20,82,40,0.95));
-    border-bottom: 2px solid rgba(245,197,24,0.3);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  }
+.hdr-title{font-family:'Cinzel Decorative',serif;color:var(--gold);font-size:.88rem;text-shadow:0 0 12px rgba(245,197,24,.4);}
 
-  .user-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(0,0,0,0.25);
-    border: 1px solid rgba(245,197,24,0.3);
-    border-radius: 50px;
-    padding: 0.4rem 0.9rem;
-    max-width: 180px;
-  }
-  .user-badge .avatar { font-size: 1.2rem; }
-  .user-badge .username {
-    color: var(--gold-light);
-    font-weight: 800;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+/* ── Luck bar + multiplier ── */
+.luck-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
+.luck-lbl{font-size:.65rem;color:var(--g-pale);font-weight:700;text-transform:uppercase;letter-spacing:1px;}
 
-  .header-title {
-    font-family: 'Cinzel Decorative', serif;
-    color: var(--gold);
-    font-size: 1rem;
-    text-align: center;
-    text-shadow: 0 0 15px rgba(245,197,24,0.4);
-    display: none;
-  }
+.luck-row{display:flex;align-items:center;gap:6px;}
 
-  /* Luck Bar */
-  .luck-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 3px;
-    min-width: 130px;
-  }
-  .luck-label {
-    font-size: 0.7rem;
-    color: var(--green-pale);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .luck-bar-wrap {
-    width: 130px;
-    height: 18px;
-    background: rgba(0,0,0,0.4);
-    border-radius: 50px;
-    border: 1.5px solid rgba(39,174,96,0.5);
-    overflow: hidden;
-    position: relative;
-  }
-  .luck-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--green-mid), var(--green-light), var(--gold-light));
-    border-radius: 50px;
-    width: 0%;
-    transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
-    position: relative;
-    overflow: hidden;
-  }
-  .luck-bar-fill::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: shimmer 1.5s infinite;
-  }
-  @keyframes shimmer { to { left: 200%; } }
-  .luck-value {
-    font-size: 0.75rem;
-    font-weight: 900;
-    color: var(--green-light);
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-  }
+.luck-multiplier{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.78rem;font-weight:700;
+  color:var(--gold);
+  background:rgba(0,0,0,.35);
+  border:1.5px solid rgba(245,197,24,.5);
+  border-radius:6px;padding:1px 6px;
+  min-width:28px;text-align:center;
+  text-shadow:0 0 10px rgba(245,197,24,.6);
+  transition:all .3s;
+  line-height:1.4;
+}
+.luck-multiplier.bump{animation:multiBump .4s cubic-bezier(.34,1.56,.64,1);}
+@keyframes multiBump{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
 
-  /* Main content */
-  .main-content {
-    flex: 1;
-    padding: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-  }
+.luck-track{
+  width:110px;height:16px;
+  background:rgba(0,0,0,.4);border-radius:50px;
+  border:1.5px solid rgba(37,160,80,.45);
+  overflow:hidden;position:relative;
+}
+.luck-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--g-mid),var(--g-light),var(--gold-lt));
+  border-radius:50px;width:0%;
+  transition:width .65s cubic-bezier(.4,0,.2,1);
+  position:relative;overflow:hidden;
+}
+.luck-fill::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+  animation:lShim 1.6s infinite;
+}
+@keyframes lShim{to{left:200%;}}
+.luck-num{position:absolute;right:5px;top:50%;transform:translateY(-50%);font-size:.66rem;font-weight:900;color:#fff;z-index:1;}
 
-  .section-title {
-    font-family: 'Cinzel Decorative', serif;
-    color: var(--gold);
-    font-size: 1.1rem;
-    text-align: center;
-    text-shadow: 0 0 15px rgba(245,197,24,0.4);
-    margin-bottom: 0.3rem;
-  }
+/* ── Main body ── */
+.main-body{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  padding:1rem 1rem 1.2rem;gap:.9rem;
+}
 
-  /* Gacha Grid */
-  .gacha-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    width: 100%;
-  }
+.sec-title{font-family:'Cinzel Decorative',serif;color:var(--gold);font-size:1rem;text-align:center;text-shadow:0 0 16px rgba(245,197,24,.45);}
+.sec-stars{color:var(--gold);font-size:.68rem;letter-spacing:3px;opacity:.5;}
 
-  .prize-card {
-    aspect-ratio: 1;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.15s;
-    border: 2px solid rgba(255,255,255,0.1);
-    background: linear-gradient(145deg, rgba(20,82,40,0.9), rgba(13,58,30,0.95));
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
+/* ══ CIRCLE ARENA ══ */
+.circle-arena{
+  position:relative;
+  width:min(90vw,420px);
+  aspect-ratio:1;
+  margin:0 auto;
+}
 
-  .prize-card .card-icon { font-size: 1.6rem; z-index: 1; }
-  .prize-card .card-label {
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--gold-light);
-    text-align: center;
-    z-index: 1;
-    line-height: 1.2;
-    margin-top: 3px;
-    padding: 0 4px;
-  }
+.ring{position:absolute;border-radius:50%;border:1.5px solid;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.ring-1{width:100%;height:100%;border-color:rgba(245,197,24,.13);}
+.ring-2{width:80%;height:80%;border-color:rgba(37,160,80,.16);}
+.ring-3{width:60%;height:60%;border-color:rgba(245,197,24,.09);}
 
-  /* Prize card types */
-  .prize-card[data-type="luck1"] { border-color: rgba(39,174,96,0.5); }
-  .prize-card[data-type="luck2"] { border-color: rgba(82,201,122,0.6); }
-  .prize-card[data-type="luck5"] { border-color: rgba(245,197,24,0.5); }
-  .prize-card[data-type="luck10"] { border-color: rgba(245,197,24,0.8); }
-  .prize-card[data-type="samsung"] {
-    border-color: rgba(20,40,160,0.9);
-    background: linear-gradient(145deg, rgba(20,40,160,0.3), rgba(13,58,30,0.95));
-  }
+.ring-dash{
+  position:absolute;border-radius:50%;
+  border:2px dashed rgba(245,197,24,.16);
+  top:50%;left:50%;width:90%;height:90%;
+  transform:translate(-50%,-50%);
+  animation:rotSlow 28s linear infinite;pointer-events:none;
+}
+@keyframes rotSlow{to{transform:translate(-50%,-50%) rotate(360deg);}}
 
-  /* Highlight animation on card */
-  .prize-card.highlight {
-    border-color: var(--gold) !important;
-    box-shadow: 0 0 20px var(--gold), 0 0 40px rgba(245,197,24,0.4) !important;
-    transform: scale(1.06);
-    z-index: 2;
-  }
-  .prize-card.highlight::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(245,197,24,0.35), transparent 70%);
-    animation: cardGlow 0.3s ease-in-out infinite alternate;
-  }
-  @keyframes cardGlow {
-    from { opacity: 0.5; }
-    to { opacity: 1; }
-  }
+.center-piece{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:26%;aspect-ratio:1;
+  background:radial-gradient(circle at 35% 35%,rgba(37,160,80,.55),rgba(7,31,14,.9));
+  border-radius:50%;border:2.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(1.3rem,5vw,2rem);
+  box-shadow:0 0 28px rgba(245,197,24,.3),inset 0 0 18px rgba(0,0,0,.45);
+  z-index:5;
+  animation:cpGlow 3s ease-in-out infinite alternate;
+  transition:transform .08s;
+}
+@keyframes cpGlow{
+  from{box-shadow:0 0 18px rgba(245,197,24,.2),inset 0 0 15px rgba(0,0,0,.45);}
+  to{box-shadow:0 0 38px rgba(245,197,24,.55),inset 0 0 18px rgba(0,0,0,.45);}
+}
 
-  .prize-card.winner {
-    border-color: var(--gold) !important;
-    box-shadow: 0 0 30px var(--gold), 0 0 60px rgba(245,197,24,0.6) !important;
-    animation: winnerPulse 0.5s ease-in-out 3;
-  }
-  @keyframes winnerPulse {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
+/* ── Prize nodes ── */
+.prize-node{
+  position:absolute;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:2.5px solid rgba(255,255,255,.12);
+  background:linear-gradient(145deg,rgba(26,107,53,.92),rgba(7,31,14,.96));
+  box-shadow:0 4px 16px rgba(0,0,0,.45);
+  overflow:hidden;transition:box-shadow .12s;
+}
+.prize-node .pn-icon{font-size:1.3em;line-height:1;z-index:1;}
+.prize-node .pn-lbl{font-size:.46em;font-weight:900;color:var(--gold-lt);text-align:center;z-index:1;line-height:1.15;margin-top:.18em;padding:0 .3em;}
 
-  /* Spin button */
-  .spin-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-    width: 100%;
-  }
+/* Type colours */
+.prize-node[data-type="luck1"]  {border-color:rgba(37,160,80,.55);}
+.prize-node[data-type="luck2"]  {border-color:rgba(77,216,120,.65);}
+.prize-node[data-type="luck5"]  {border-color:rgba(245,197,24,.55);}
+.prize-node[data-type="luck10"] {border-color:rgba(245,197,24,.9);}
+.prize-node[data-type="samsung"]{border-color:rgba(20,40,160,.9);background:linear-gradient(145deg,rgba(20,40,160,.35),rgba(7,31,14,.96));}
 
-  .btn-spin {
-    padding: 1rem 3rem;
-    border-radius: 50px;
-    border: none;
-    background: linear-gradient(135deg, var(--gold) 0%, #e8b800 50%, var(--gold) 100%);
-    color: var(--green-deep);
-    font-size: 1.2rem;
-    font-family: 'Cinzel Decorative', serif;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.25s;
-    box-shadow: 0 6px 30px rgba(245,197,24,0.5), 0 2px 0 var(--gold-dark);
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-spin::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -60%;
-    width: 40%; height: 200%;
-    background: rgba(255,255,255,0.3);
-    transform: skewX(-20deg);
-    animation: btnShine 2.5s ease-in-out infinite;
-  }
-  @keyframes btnShine {
-    0%,100% { left: -60%; }
-    50% { left: 120%; }
-  }
-  .btn-spin:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(245,197,24,0.6); }
-  .btn-spin:active:not(:disabled) { transform: translateY(0); }
-  .btn-spin:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+/* Cash prizes – greyed out / locked look */
+.prize-node[data-type="cash"]{
+  border-color:rgba(192,57,43,.45);
+  background:linear-gradient(145deg,rgba(60,15,10,.9),rgba(7,31,14,.96));
+  opacity:.72;
+}
+.prize-node[data-type="cash"] .pn-lbl{color:#f0a090;}
+.prize-node[data-type="cash"]::after{
+  content:'🔒';
+  position:absolute;bottom:6%;right:8%;
+  font-size:.38em;opacity:.65;
+  z-index:2;
+}
 
-  .spin-hint { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+/* Highlight state */
+.prize-node.hl{
+  border-color:var(--gold)!important;
+  box-shadow:0 0 0 3px rgba(245,197,24,.28),0 0 24px var(--gold),0 0 52px rgba(245,197,24,.42)!important;
+  z-index:10;
+}
+.prize-node.hl::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at center,rgba(245,197,24,.38),transparent 68%);
+  animation:hlPls .28s ease-in-out infinite alternate;
+}
+@keyframes hlPls{from{opacity:.4}to{opacity:1}}
 
-  /* Marquee / ticker */
-  .ticker-wrap {
-    width: 100%;
-    max-width: 700px;
-    background: linear-gradient(90deg, rgba(13,58,30,0.98), rgba(20,82,40,0.95));
-    border-top: 2px solid rgba(245,197,24,0.3);
-    border-bottom: 2px solid rgba(245,197,24,0.3);
-    overflow: hidden;
-    padding: 0.6rem 0;
-    position: sticky;
-    bottom: 0;
-    z-index: 50;
-  }
-  .ticker-inner {
-    display: flex;
-    white-space: nowrap;
-    animation: ticker 22s linear infinite;
-    gap: 0;
-  }
-  @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .ticker-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0 2.5rem;
-    font-size: 0.85rem;
-    color: var(--cream);
-    font-weight: 700;
-  }
-  .ticker-item .tick-icon { font-size: 1rem; }
-  .ticker-item .tick-name { color: var(--gold-light); }
-  .ticker-item .tick-prize { color: var(--green-pale); font-weight: 900; }
-  .ticker-sep {
-    color: rgba(245,197,24,0.4);
-    padding: 0 0.5rem;
-  }
+/* Winner state */
+.prize-node.winner{
+  border-color:var(--gold)!important;
+  box-shadow:0 0 0 5px rgba(245,197,24,.38),0 0 36px var(--gold),0 0 72px rgba(245,197,24,.6)!important;
+  animation:winBounce .5s ease-in-out 3;
+}
+@keyframes winBounce{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.22);}}
 
-  /* ===== POPUP ===== */
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    backdrop-filter: blur(4px);
-  }
-  .popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+/* ── Spin button ── */
+.spin-zone{display:flex;flex-direction:column;align-items:center;gap:.6rem;width:100%;}
 
-  .popup-card {
-    background: linear-gradient(145deg, #0d3a1e, #145228);
-    border: 2px solid var(--gold);
-    border-radius: 20px;
-    padding: 2rem 1.8rem;
-    max-width: 360px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 0 60px rgba(245,197,24,0.2), 0 30px 80px rgba(0,0,0,0.7);
-    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
-    position: relative;
-  }
-  @keyframes popIn {
-    from { opacity:0; transform:scale(0.6); }
-    to { opacity:1; transform:scale(1); }
-  }
+.btn-spin{
+  padding:.9rem 2.8rem;border-radius:50px;border:none;
+  background:linear-gradient(135deg,var(--gold),#d4a017);
+  color:var(--g-deep);font-size:1.1rem;font-family:'Cinzel Decorative',serif;font-weight:700;
+  cursor:pointer;letter-spacing:1px;
+  box-shadow:0 6px 30px rgba(245,197,24,.48),0 2px 0 var(--gold-dk);
+  transition:all .22s;position:relative;overflow:hidden;
+}
+.btn-spin::before{
+  content:'';position:absolute;top:-50%;left:-70%;width:45%;height:200%;
+  background:rgba(255,255,255,.28);transform:skewX(-18deg);
+  animation:shine 2.6s ease-in-out infinite;
+}
+.btn-spin:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 12px 40px rgba(245,197,24,.58);}
+.btn-spin:active:not(:disabled){transform:translateY(0);}
+.btn-spin:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+.spin-hint{font-size:.75rem;color:rgba(255,255,255,.32);}
 
-  .popup-sparkles {
-    position: absolute;
-    top: -20px; left: 50%; transform: translateX(-50%);
-    font-size: 2rem;
-    animation: bounceIn 0.5s ease 0.2s both;
-  }
-  @keyframes bounceIn {
-    0%{transform:translateX(-50%) translateY(10px) scale(0)} 
-    100%{transform:translateX(-50%) translateY(0) scale(1)}
-  }
+/* ── Ticker ── */
+.ticker-wrap{
+  width:100%;
+  background:linear-gradient(90deg,rgba(7,31,14,.98),rgba(14,59,28,.95));
+  border-top:1.5px solid rgba(245,197,24,.22);
+  overflow:hidden;padding:.55rem 0;
+  position:sticky;bottom:0;z-index:50;
+}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 30s linear infinite;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.t-item{display:inline-flex;align-items:center;gap:.35rem;padding:0 2rem;font-size:.82rem;font-weight:700;color:var(--cream);}
+.t-name{color:var(--gold-lt);}
+.t-prize{color:var(--g-pale);font-weight:900;}
+.t-sep{color:rgba(245,197,24,.32);padding:0 .4rem;}
 
-  .popup-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.1rem;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
-  }
+/* ══ POPUP ══ */
+.pop-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);
+  z-index:200;align-items:center;justify-content:center;
+  padding:1rem;backdrop-filter:blur(5px);
+}
+.pop-overlay.active{display:flex;animation:fadeIn .28s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-  .popup-prize-icon { font-size: 3.5rem; margin: 0.5rem 0; display: block; }
+.pop-card{
+  background:linear-gradient(150deg,#0e3b1c,#071f0e);
+  border:2px solid var(--gold);border-radius:22px;
+  padding:2.2rem 1.8rem 1.8rem;max-width:340px;width:100%;text-align:center;
+  box-shadow:0 0 60px rgba(245,197,24,.22),0 30px 80px rgba(0,0,0,.7);
+  animation:popIn .42s cubic-bezier(.34,1.56,.64,1);
+  position:relative;
+}
+@keyframes popIn{from{opacity:0;transform:scale(.55) rotate(-4deg);}to{opacity:1;transform:scale(1) rotate(0deg);}}
 
-  .popup-prize-name {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--white);
-    margin-bottom: 0.3rem;
-  }
-  .popup-prize-name span { color: var(--gold-light); }
+.pop-sparks{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:2.2rem;animation:sBounce .5s cubic-bezier(.34,1.56,.64,1) .15s both;}
+@keyframes sBounce{from{transform:translateX(-50%) translateY(12px) scale(0);}to{transform:translateX(-50%) translateY(0) scale(1);}}
 
-  .popup-desc { font-size: 0.85rem; color: var(--green-pale); margin-bottom: 1.2rem; }
+.pop-title{font-family:'Cinzel Decorative',serif;font-size:1.05rem;color:var(--gold);margin:.4rem 0;}
+.pop-icon{font-size:3.2rem;display:block;margin:.4rem 0;}
+.pop-name{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:.25rem;}
+.pop-name span{color:var(--gold-lt);}
+.pop-desc{font-size:.82rem;color:var(--g-pale);margin-bottom:1rem;}
 
-  .popup-phone-img {
-    width: 120px;
-    height: 200px;
-    margin: 0.8rem auto;
-    background: linear-gradient(145deg, #1428a0, #0d1e6e);
-    border-radius: 20px;
-    border: 3px solid rgba(255,255,255,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    position: relative;
-    box-shadow: 0 10px 40px rgba(20,40,160,0.5);
-  }
-  .popup-phone-img::before {
-    content: '📱';
-    font-size: 4rem;
-  }
-  .popup-phone-badge {
-    position: absolute;
-    bottom: -10px;
-    background: var(--samsung-color);
-    color: white;
-    font-size: 0.65rem;
-    font-weight: 900;
-    padding: 2px 8px;
-    border-radius: 50px;
-    letter-spacing: 1px;
-  }
+/* Luck level-up badge inside popup */
+.luck-level-badge{
+  display:inline-block;
+  margin:.3rem auto .8rem;
+  font-family:'Cinzel Decorative',serif;
+  font-size:.82rem;
+  background:linear-gradient(135deg,rgba(245,197,24,.18),rgba(245,197,24,.05));
+  border:1.5px solid rgba(245,197,24,.5);
+  border-radius:8px;padding:.3rem .9rem;
+  color:var(--gold-lt);letter-spacing:.5px;
+}
 
-  .popup-btns { display: flex; gap: 0.8rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
+.pop-phone{
+  width:100px;height:170px;margin:.6rem auto;
+  background:linear-gradient(150deg,#1428a0,#080f50);
+  border-radius:18px;border:2.5px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;position:relative;
+  box-shadow:0 10px 40px rgba(20,40,160,.55);
+}
+.pop-phone-badge{
+  position:absolute;bottom:-10px;background:#1428a0;color:#fff;
+  font-size:.6rem;font-weight:900;padding:2px 8px;border-radius:50px;letter-spacing:1px;
+}
 
-  .btn-ok {
-    padding: 0.7rem 2.5rem;
-    border-radius: 50px;
-    border: none;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: var(--green-deep);
-    font-size: 1rem;
-    font-weight: 900;
-    font-family: 'Nunito', sans-serif;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-ok:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,197,24,0.4); }
+.pop-btns{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:.8rem;}
 
-  .btn-download {
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    border: 2px solid var(--samsung-color);
-    background: var(--samsung-color);
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 800;
-    font-family: 'Nunito', sans-serif;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(20,40,160,0.5); }
+.btn-ok{
+  padding:.65rem 2.2rem;border-radius:50px;border:none;
+  background:linear-gradient(135deg,var(--gold),#c8960a);
+  color:var(--g-deep);font-size:.95rem;font-weight:900;font-family:'Nunito',sans-serif;
+  cursor:pointer;transition:all .2s;
+}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,197,24,.42);}
 
-  /* Confetti */
-  .confetti-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 300;
-    overflow: hidden;
-  }
-  .confetti-piece {
-    position: absolute;
-    width: 10px; height: 10px;
-    opacity: 0;
-    animation: confettiFall linear forwards;
-    border-radius: 2px;
-  }
-  @keyframes confettiFall {
-    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-  }
+.btn-dl{
+  padding:.65rem 1.4rem;border-radius:50px;
+  border:2px solid #1428a0;background:#1428a0;
+  color:#fff;font-size:.88rem;font-weight:800;font-family:'Nunito',sans-serif;
+  cursor:pointer;transition:all .2s;
+}
+.btn-dl:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(20,40,160,.5);}
 
-  /* Responsive */
-  @media (max-width: 480px) {
-    .gacha-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
-    .prize-card .card-icon { font-size: 1.3rem; }
-    .prize-card .card-label { font-size: 0.55rem; }
-    .btn-spin { padding: 0.9rem 2rem; font-size: 1rem; }
-    .form-card { padding: 2rem 1.5rem; }
-    .form-card h1 { font-size: 1.3rem; }
-    .luck-container { min-width: 110px; }
-    .luck-bar-wrap { width: 110px; }
-  }
+/* Confetti */
+.cf-box{position:fixed;inset:0;pointer-events:none;z-index:300;overflow:hidden;}
+.cf{position:absolute;opacity:0;border-radius:2px;animation:cfFall linear forwards;}
+@keyframes cfFall{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(105vh) rotate(700deg);opacity:0;}}
 
-  .stars-decoration {
-    color: var(--gold);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    opacity: 0.6;
-  }
+@media(max-width:380px){
+  .hdr-title{display:none;}
+  .btn-spin{padding:.8rem 1.8rem;font-size:.95rem;}
+}
 </style>
 </head>
 <body>
 
-<!-- Floating lanterns -->
-<div class="lantern" style="left:5%;animation-duration:12s;animation-delay:0s;font-size:1.5rem;">🏮</div>
-<div class="lantern" style="left:15%;animation-duration:16s;animation-delay:3s;font-size:1rem;">✨</div>
-<div class="lantern" style="left:30%;animation-duration:14s;animation-delay:6s;font-size:1.8rem;">🌙</div>
-<div class="lantern" style="left:55%;animation-duration:18s;animation-delay:2s;font-size:1.2rem;">⭐</div>
-<div class="lantern" style="left:70%;animation-duration:11s;animation-delay:8s;font-size:1.5rem;">🏮</div>
-<div class="lantern" style="left:85%;animation-duration:15s;animation-delay:4s;font-size:1rem;">✨</div>
-<div class="lantern" style="left:92%;animation-duration:13s;animation-delay:1s;font-size:1.3rem;">🌙</div>
+<!-- Particles -->
+<script>
+(function(){
+  const cols=['#25a050','#f5c518','#4dd878','#ffe57a','#a6f5c2'];
+  for(let i=0;i<18;i++){
+    const d=document.createElement('div');d.className='ptcl';
+    const s=4+Math.random()*10;
+    d.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%cols.length]};animation-duration:${9+Math.random()*16}s;animation-delay:${Math.random()*12}s`;
+    document.body.appendChild(d);
+  }
+})();
+</script>
 
-<!-- ===== NAME SCREEN ===== -->
+<!-- ══ NAME SCREEN ══ -->
 <div id="nameScreen" class="screen active">
   <div class="form-card">
-    <span class="logo">🏮</span>
+    <span class="form-logo">🏮</span>
     <h1>THR Lebaran</h1>
-    <p>Selamat Hari Raya Idul Fitri!<br>Masukkan namamu untuk mulai spin!</p>
-    <input type="text" id="nameInput" placeholder="Nama kamu..." maxlength="20" autocomplete="off" />
-    <button class="btn-primary" onclick="startGame()">✨ Mulai Spin!</button>
+    <p>Selamat Hari Raya Idul Fitri! 🌙<br>Masukkan namamu untuk mulai spin gacha!</p>
+    <input id="nameInput" type="text" placeholder="Nama kamu..." maxlength="22" autocomplete="off">
+    <button class="btn-start" onclick="startGame()">✨ Mulai Spin!</button>
   </div>
 </div>
 
-<!-- ===== MAIN SCREEN ===== -->
+<!-- ══ MAIN SCREEN ══ -->
 <div id="mainScreen" class="screen">
-
-  <!-- Header -->
   <div class="header">
     <div class="user-badge">
-      <span class="avatar">👤</span>
-      <span class="username" id="displayName">User</span>
+      <span class="av">👤</span>
+      <span class="uname" id="displayName">User</span>
     </div>
-    <span class="header-title">🏮 THR GACHA</span>
-    <div class="luck-container">
-      <span class="luck-label">⭐ Luck</span>
-      <div class="luck-bar-wrap">
-        <div class="luck-bar-fill" id="luckBarFill"></div>
-        <span class="luck-value" id="luckBarText">0</span>
+    <span class="hdr-title">🏮 THR GACHA</span>
+    <div class="luck-wrap">
+      <span class="luck-lbl">⭐ Luck</span>
+      <div class="luck-row">
+        <div class="luck-multiplier" id="luckMulti">x1</div>
+        <div class="luck-track">
+          <div class="luck-fill" id="luckFill"></div>
+          <span class="luck-num" id="luckNum">0</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Content -->
-  <div class="main-content">
-
-    <div style="text-align:center;">
-      <div class="section-title">🎁 THR Lebaran Gacha</div>
-      <div class="stars-decoration">★ ★ ★ ★ ★</div>
+  <div class="main-body">
+    <div>
+      <div class="sec-title">🎁 Gacha THR 2025</div>
+      <div class="sec-stars">✦ ✦ ✦ ✦ ✦</div>
     </div>
 
-    <!-- Gacha Grid: 9 cards total -->
-    <div class="gacha-grid" id="gachaGrid">
-      <!-- Cards injected by JS -->
+    <div class="circle-arena" id="arena">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+      <div class="ring-dash"></div>
+      <div class="center-piece" id="centerPiece">🏮</div>
     </div>
 
-    <!-- Spin area -->
-    <div class="spin-area">
+    <div class="spin-zone">
       <button class="btn-spin" id="spinBtn" onclick="doSpin()">🎰 SPIN!</button>
       <span class="spin-hint">Tekan SPIN untuk mencoba keberuntunganmu</span>
     </div>
-
   </div>
 
-  <!-- Marquee -->
   <div class="ticker-wrap">
-    <div class="ticker-inner" id="tickerInner">
-      <!-- Injected by JS -->
-    </div>
+    <div class="ticker-inner" id="tickerInner"></div>
   </div>
-
 </div>
 
-<!-- ===== POPUP ===== -->
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup-card" id="popupCard">
-    <div class="popup-sparkles" id="popupSparkles">🎊</div>
-    <div class="popup-title" id="popupTitle">Selamat!</div>
-    <span class="popup-prize-icon" id="popupIcon">🎁</span>
-    <div class="popup-prize-name" id="popupName">Hadiah</div>
-    <div class="popup-desc" id="popupDesc">Hadiah berhasil didapat!</div>
-    <div id="popupPhoneImg" class="popup-phone-img" style="display:none;">
-      <span class="popup-phone-badge">SAMSUNG A17</span>
+<!-- ══ POPUP ══ -->
+<div class="pop-overlay" id="popOverlay">
+  <div class="pop-card">
+    <div class="pop-sparks" id="popSparks">🎊</div>
+    <div class="pop-title"  id="popTitle">Selamat!</div>
+    <span class="pop-icon"  id="popIcon">🎁</span>
+    <div class="pop-name"   id="popName">Hadiah</div>
+    <div class="pop-desc"   id="popDesc">Hadiah berhasil didapat!</div>
+    <div class="luck-level-badge" id="luckLevelBadge" style="display:none;"></div>
+    <div class="pop-phone"  id="popPhone" style="display:none;">
+      📱<span class="pop-phone-badge">SAMSUNG A17</span>
     </div>
-    <div class="popup-btns">
-      <button class="btn-download" id="btnDownload" style="display:none;" onclick="downloadPhone()">⬇ Download Gambar</button>
+    <div class="pop-btns">
+      <button class="btn-dl" id="btnDl" style="display:none;" onclick="downloadPhone()">⬇ Download</button>
       <button class="btn-ok" onclick="closePopup()">OK 👍</button>
     </div>
   </div>
 </div>
 
-<!-- Confetti container -->
-<div class="confetti-container" id="confettiContainer"></div>
+<div class="cf-box" id="cfBox"></div>
 
 <script>
-// ===== CONFIG =====
+/* ─────────────────────────────────────────
+   PRIZE DATA
+   12 nodes total in the circle:
+   • 4 cash prizes  (0% prob, displayed as locked)
+   • 3 luck+1       (40% total)
+   • 2 luck+2       (30% total)
+   • 1 luck+5       (15%)
+   • 1 luck+10      (10%)
+   • 1 samsung      (5%)
+───────────────────────────────────────── */
 const PRIZES = [
-  { id: 'luck1a', type: 'luck1', icon: '🍀', label: 'LUCK +1', value: 1, weight: 14 },
-  { id: 'luck1b', type: 'luck1', icon: '🍀', label: 'LUCK +1', value: 1, weight: 13 },
-  { id: 'luck1c', type: 'luck1', icon: '🍀', label: 'LUCK +1', value: 1, weight: 13 },
-  { id: 'luck2a', type: 'luck2', icon: '🌟', label: 'LUCK +2', value: 2, weight: 15 },
-  { id: 'luck2b', type: 'luck2', icon: '🌟', label: 'LUCK +2', value: 2, weight: 15 },
-  { id: 'luck5',  type: 'luck5', icon: '⭐', label: 'LUCK +5', value: 5, weight: 15 },
-  { id: 'luck10', type: 'luck10', icon: '💫', label: 'LUCK +10', value: 10, weight: 10 },
-  { id: 'samsung', type: 'samsung', icon: '📱', label: 'Samsung A17', value: 0, weight: 5 },
-  { id: 'luck1d', type: 'luck1', icon: '🍀', label: 'LUCK +1', value: 1, weight: 0 }, // placeholder slot visible
+  // cash (weight 0 = never wins, but appears in circle)
+  { type:'cash',    icon:'💵', label:'Rp10.000',  value:0,  weight:0 },
+  { type:'cash',    icon:'💵', label:'Rp20.000',  value:0,  weight:0 },
+  { type:'cash',    icon:'💵', label:'Rp50.000',  value:0,  weight:0 },
+  { type:'cash',    icon:'💵', label:'Rp100.000', value:0,  weight:0 },
+  // luck
+  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',     value:1,  weight:14 },
+  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',     value:1,  weight:13 },
+  { type:'luck1',   icon:'🍀', label:'LUCK\n+1',     value:1,  weight:13 },
+  { type:'luck2',   icon:'🌟', label:'LUCK\n+2',     value:2,  weight:15 },
+  { type:'luck2',   icon:'🌟', label:'LUCK\n+2',     value:2,  weight:15 },
+  { type:'luck5',   icon:'⭐', label:'LUCK\n+5',     value:5,  weight:15 },
+  { type:'luck10',  icon:'💫', label:'LUCK\n+10',    value:10, weight:10 },
+  { type:'samsung', icon:'📱', label:'Samsung\nA17', value:0,  weight:5  },
+];
+const N = PRIZES.length; // 12
+
+let luckValue    = 0;   // raw accumulated luck points
+let luckMulti    = 1;   // current multiplier (1 per 10 points)
+let isSpinning   = false;
+let nodeEls      = [];
+
+/* ─── BUILD CIRCLE ─── */
+function buildCircle(){
+  const arena = document.getElementById('arena');
+  arena.querySelectorAll('.prize-node').forEach(n=>n.remove());
+  nodeEls = [];
+
+  const size  = arena.offsetWidth;
+  const node  = Math.round(size * 0.175);
+  const orbit = size * 0.385;
+  const cx    = size / 2;
+  const cy    = size / 2;
+
+  PRIZES.forEach((p,i)=>{
+    const angle = (2*Math.PI*i/N) - Math.PI/2;
+    const x = cx + orbit*Math.cos(angle);
+    const y = cy + orbit*Math.sin(angle);
+
+    const el = document.createElement('div');
+    el.className    = 'prize-node';
+    el.dataset.type = p.type;
+    el.dataset.idx  = i;
+    el.style.cssText = `width:${node}px;height:${node}px;left:${x}px;top:${y}px;transform:translate(-50%,-50%);font-size:${node}px;`;
+
+    const lines = p.label.split('\n');
+    el.innerHTML = `<span class="pn-icon">${p.icon}</span><span class="pn-lbl">${lines.join('<br>')}</span>`;
+    arena.appendChild(el);
+    nodeEls.push(el);
+  });
+}
+
+/* ─── HARDCODED TICKER DATA (cash winners) ─── */
+const TICKER_ITEMS = [
+  { name:'Bxdi Sxntoso',    prize:'Rp 100.000' },
+  { name:'Sxti Rxhmawati',  prize:'Rp 50.000'  },
+  { name:'Axmad Fxuzi',     prize:'Rp 100.000' },
+  { name:'Dxwi Pxrmata',    prize:'Rp 20.000'  },
+  { name:'Rxzki Hxdayat',   prize:'Rp 100.000' },
+  { name:'Fxtimah Nxr',     prize:'Rp 50.000'  },
+  { name:'Hxndra Gxnawan',  prize:'Rp 10.000'  },
+  { name:'Nxrul Axsyah',    prize:'Rp 100.000' },
+  { name:'Axdi Pxrkasa',    prize:'Rp 50.000'  },
+  { name:'Rxhma Dxwanti',   prize:'Rp 20.000'  },
+  { name:'Wxhyu Sxtiawan',  prize:'Rp 100.000' },
+  { name:'Axu Lxstari',     prize:'Rp 10.000'  },
+  { name:'Dxni Kxrniawan',  prize:'Rp 50.000'  },
+  { name:'Bxgas Pxrnomo',   prize:'Rp 100.000' },
+  { name:'Lxna Mxrdianti',  prize:'Rp 20.000'  },
 ];
 
-// Re-map: 9 cards in grid but only 8 active prizes (slot 9 = extra luck1 display)
-const GRID_PRIZES = [
-  { id: 'luck1a', type: 'luck1', icon: '🍀', label: 'LUCK +1', value: 1, weight: 14 },
-  { id: 'luck1b', type: 'luck1', icon: '🍀', label: 'LUCK +1', value: 1, weight: 13 },
-  { id: 'luck1c', type: 'luck1', icon: '🍀', label: 'LUCK +1', value: 1, weight: 13 },
-  { id: 'luck2a', type: 'luck2', icon: '🌟', label: 'LUCK +2', value: 2, weight: 15 },
-  { id: 'luck2b', type: 'luck2', icon: '🌟', label: 'LUCK +2', value: 2, weight: 15 },
-  { id: 'luck5',  type: 'luck5', icon: '⭐', label: 'LUCK +5', value: 5, weight: 15 },
-  { id: 'luck10', type: 'luck10', icon: '💫', label: 'LUCK +10', value: 10, weight: 10 },
-  { id: 'samsung', type: 'samsung', icon: '📱', label: 'Samsung\nA17', value: 0, weight: 5 },
-];
-
-let luckValue = 0;
-let isSpinning = false;
-let userName = '';
-
-// ===== MARQUEE DATA =====
-const FIRST_NAMES = ['Budi','Siti','Ahmad','Dewi','Rizki','Fatimah','Hendra','Nurul','Andi','Rahma','Deni','Ayu','Wahyu','Lina','Bagas'];
-const PRIZES_ANNOUNCE = ['LUCK +5','LUCK +10','LUCK +2','LUCK +1','LUCK +5','LUCK +2','LUCK +10','Samsung A17'];
-
-function genInitial(name) {
-  const first = name[0].toUpperCase();
-  const masked = name.slice(1).split('').map((c,i) => i % 2 === 0 ? 'x' : c.toUpperCase()).join('');
-  return first + masked.slice(0, Math.min(masked.length, 5));
-}
-
-function genMarqueeItems() {
-  const items = [];
-  for (let i = 0; i < 14; i++) {
-    const name = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
-    const prize = PRIZES_ANNOUNCE[Math.floor(Math.random() * PRIZES_ANNOUNCE.length)];
-    const masked = genInitial(name);
-    items.push({ name: masked, prize });
-  }
-  return items;
-}
-
-function buildMarquee() {
-  const items = genMarqueeItems();
-  const inner = document.getElementById('tickerInner');
-  const html = [...items, ...items].map(it =>
-    `<span class="ticker-item">
-      <span class="tick-icon">🎉</span>
-      Selamat <span class="tick-name">${it.name}</span> mendapatkan
-      <span class="tick-prize">${it.prize}</span>
-    </span><span class="ticker-sep">|</span>`
-  ).join('');
-  inner.innerHTML = html;
-}
-
-// ===== GRID BUILD =====
-function buildGrid() {
-  const grid = document.getElementById('gachaGrid');
-  grid.innerHTML = GRID_PRIZES.map((p, i) =>
-    `<div class="prize-card" data-type="${p.type}" data-index="${i}" id="card-${i}">
-      <span class="card-icon">${p.icon}</span>
-      <span class="card-label">${p.label.replace('\n','<br>')}</span>
-    </div>`
+function buildTicker(){
+  const doubled = [...TICKER_ITEMS,...TICKER_ITEMS];
+  document.getElementById('tickerInner').innerHTML = doubled.map(it=>
+    `<span class="t-item">🎉 Selamat <span class="t-name">${it.name}</span> mendapatkan <span class="t-prize">${it.prize}</span></span><span class="t-sep">|</span>`
   ).join('');
 }
 
-// ===== NAME SCREEN =====
-function startGame() {
-  const input = document.getElementById('nameInput').value.trim();
-  if (!input) {
-    document.getElementById('nameInput').focus();
-    document.getElementById('nameInput').style.borderColor = '#e74c3c';
-    setTimeout(() => document.getElementById('nameInput').style.borderColor = '', 1000);
+/* ─── START GAME ─── */
+function startGame(){
+  const v = document.getElementById('nameInput').value.trim();
+  if(!v){
+    const inp=document.getElementById('nameInput');
+    inp.focus();inp.style.borderColor='#e74c3c';
+    setTimeout(()=>inp.style.borderColor='',1100);
     return;
   }
-  userName = input;
-  document.getElementById('displayName').textContent = input;
+  document.getElementById('displayName').textContent = v;
   document.getElementById('nameScreen').classList.remove('active');
   document.getElementById('mainScreen').classList.add('active');
-  buildGrid();
-  buildMarquee();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{buildCircle();buildTicker();}));
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('nameInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') startGame();
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('nameInput').addEventListener('keydown',e=>{if(e.key==='Enter')startGame();});
+  window.addEventListener('resize',()=>{
+    if(document.getElementById('mainScreen').classList.contains('active')) buildCircle();
   });
 });
 
-// ===== LUCK BAR =====
-function updateLuck(add) {
+/* ─── LUCK BAR + MULTIPLIER ─── */
+function updateLuck(add){
+  const prevMulti = Math.floor(luckValue / 10) + 1;
   luckValue += add;
-  const pct = Math.min(luckValue, 100);
-  document.getElementById('luckBarFill').style.width = pct + '%';
-  document.getElementById('luckBarText').textContent = luckValue;
-}
+  const newMulti  = Math.floor(luckValue / 10) + 1;
 
-// ===== WEIGHTED RANDOM =====
-function pickPrize() {
-  const totalWeight = GRID_PRIZES.reduce((s, p) => s + p.weight, 0);
-  let r = Math.random() * totalWeight;
-  for (let i = 0; i < GRID_PRIZES.length; i++) {
-    r -= GRID_PRIZES[i].weight;
-    if (r <= 0) return i;
+  // Bar shows progress within current group of 10
+  const withinGroup = luckValue % 10;
+  const pct = withinGroup === 0 && luckValue > 0 ? 100 : (withinGroup / 10) * 100;
+
+  document.getElementById('luckFill').style.width = pct + '%';
+  document.getElementById('luckNum').textContent  = luckValue;
+
+  luckMulti = newMulti;
+  const multiEl = document.getElementById('luckMulti');
+  multiEl.textContent = 'x' + luckMulti;
+
+  if(newMulti > prevMulti){
+    // Level-up flash
+    multiEl.classList.remove('bump');
+    void multiEl.offsetWidth; // reflow
+    multiEl.classList.add('bump');
+    multiEl.style.color = '#fff';
+    multiEl.style.borderColor = 'rgba(255,255,255,.8)';
+    setTimeout(()=>{
+      multiEl.style.color = '';
+      multiEl.style.borderColor = '';
+    }, 800);
   }
-  return 0;
 }
 
-// ===== SPIN =====
-function doSpin() {
-  if (isSpinning) return;
+/* ─── WEIGHTED PICK (excludes weight-0) ─── */
+function pickWinner(){
+  const total = PRIZES.reduce((s,p)=>s+p.weight, 0);
+  let r = Math.random() * total;
+  for(let i=0;i<N;i++){ r-=PRIZES[i].weight; if(r<=0) return i; }
+  // fallback: first non-zero weight
+  return PRIZES.findIndex(p=>p.weight>0);
+}
+
+/* ─── SPIN ─── */
+function doSpin(){
+  if(isSpinning) return;
   isSpinning = true;
   document.getElementById('spinBtn').disabled = true;
 
-  const cards = document.querySelectorAll('.prize-card');
-  const totalCards = cards.length;
-  const winnerIndex = pickPrize();
+  const winner = pickWinner();
+  nodeEls.forEach(n=>n.classList.remove('hl','winner'));
 
-  // Clear previous highlights/winner
-  cards.forEach(c => c.classList.remove('highlight', 'winner'));
+  // Center spin
+  const cp = document.getElementById('centerPiece');
+  cp.style.animation = 'none';
+  let ang = 0;
+  const cpTick = setInterval(()=>{ ang+=20; cp.style.transform=`translate(-50%,-50%) rotate(${ang}deg)`; }, 30);
 
-  // Animation: rapid -> slow -> stop
-  // Total ~3.5s, visits ~30 steps
-  const totalSteps = 28 + Math.floor(Math.random() * 6); // 28-33
+  // 2-3 full laps then land on winner
+  const laps = 2 + Math.floor(Math.random()*2);
+  const stepsToWinner = ((winner - 0) + N) % N;
+  const totalSteps = laps*N + stepsToWinner + 1;
+
+  function delay(step){ return 55 + 360*Math.pow(step/totalSteps, 2.4); }
+
   let step = 0;
-  let currentCard = 0;
-
-  function getDelay(step, total) {
-    const progress = step / total;
-    // Ease: fast start (~60ms), slow end (~350ms)
-    const minDelay = 60;
-    const maxDelay = 350;
-    // Quadratic easing
-    return minDelay + (maxDelay - minDelay) * Math.pow(progress, 2.2);
-  }
-
-  // Build path: for last few steps, steer towards winner
-  const path = [];
-  let pos = Math.floor(Math.random() * totalCards);
-  for (let s = 0; s < totalSteps; s++) {
-    path.push(pos);
-    const remaining = totalSteps - s - 1;
-    if (remaining <= 3) {
-      // Steer: move towards winner
-      const diff = (winnerIndex - pos + totalCards) % totalCards;
-      if (diff === 0) {
-        pos = pos; // stay... but keep moving
-      } else if (diff <= remaining) {
-        pos = (pos + 1) % totalCards;
-      } else {
-        pos = (pos + 1) % totalCards;
-      }
-    } else {
-      pos = (pos + 1) % totalCards;
-    }
-  }
-  // Force last step = winner
-  path.push(winnerIndex);
-
-  function animateStep() {
-    // Remove highlight from all
-    cards.forEach(c => c.classList.remove('highlight'));
-
-    const cardIndex = path[step];
-    cards[cardIndex].classList.add('highlight');
-    currentCard = cardIndex;
+  function tick(){
+    nodeEls.forEach(n=>n.classList.remove('hl'));
+    nodeEls[step % N].classList.add('hl');
     step++;
-
-    if (step < path.length) {
-      const delay = getDelay(step, path.length);
-      setTimeout(animateStep, delay);
+    if(step < totalSteps){
+      setTimeout(tick, delay(step));
     } else {
-      // Done — winner is currentCard = winnerIndex
-      cards.forEach(c => c.classList.remove('highlight'));
-      cards[winnerIndex].classList.add('winner');
-      setTimeout(() => showResult(winnerIndex), 600);
+      nodeEls.forEach(n=>n.classList.remove('hl'));
+      nodeEls[winner].classList.add('winner');
+      clearInterval(cpTick);
+      cp.style.animation = 'cpGlow 3s ease-in-out infinite alternate';
+      cp.style.transform  = 'translate(-50%,-50%)';
+      setTimeout(()=>showResult(winner), 650);
     }
   }
-
-  animateStep();
+  setTimeout(tick, 180);
 }
 
-// ===== SHOW RESULT =====
-function showResult(idx) {
-  const prize = GRID_PRIZES[idx];
-  const isSamsung = prize.type === 'samsung';
-  const isLuck = prize.type.startsWith('luck');
+/* ─── RESULT POPUP ─── */
+function showResult(idx){
+  const p    = PRIZES[idx];
+  const isSam  = p.type === 'samsung';
+  const isLuck = p.type.startsWith('luck');
 
-  document.getElementById('popupSparkles').textContent = isSamsung ? '🎊' : '✨';
-  document.getElementById('popupTitle').textContent = isSamsung ? '🏆 Jackpot!' : '🎉 Selamat!';
-  document.getElementById('popupIcon').textContent = prize.icon;
-  document.getElementById('popupIcon').style.display = isSamsung ? 'none' : 'block';
-  document.getElementById('popupName').innerHTML = isSamsung
+  document.getElementById('popSparks').textContent = isSam ? '🏆' : '✨';
+  document.getElementById('popTitle').textContent  = isSam ? '🏆 Jackpot Besar!' : '🎉 Selamat!';
+  document.getElementById('popIcon').textContent   = p.icon;
+  document.getElementById('popIcon').style.display = isSam ? 'none' : 'block';
+
+  document.getElementById('popName').innerHTML = isSam
     ? '📱 <span>Samsung Galaxy A17!</span>'
-    : `Kamu mendapat <span>${prize.label}</span>`;
-  document.getElementById('popupDesc').textContent = isSamsung
+    : `Kamu dapat <span>${p.label.replace('\n',' ')}</span>`;
+
+  document.getElementById('popDesc').textContent = isSam
     ? 'Luar biasa! Kamu memenangkan hadiah utama!'
-    : `Luck kamu bertambah +${prize.value}!`;
-  document.getElementById('popupPhoneImg').style.display = isSamsung ? 'flex' : 'none';
-  document.getElementById('btnDownload').style.display = isSamsung ? 'inline-block' : 'none';
+    : isLuck
+      ? `Luck kamu bertambah +${p.value} poin!`
+      : 'Sayang sekali, hadiah ini sedang terkunci.';
 
-  document.getElementById('popupOverlay').classList.add('active');
+  // Luck level badge
+  const badge = document.getElementById('luckLevelBadge');
+  if(isLuck){
+    // apply luck first so multiplier is updated
+    updateLuck(p.value);
+    const newMulti = Math.floor(luckValue/10)+1;
+    badge.textContent = `⭐ Luck kamu sekarang: ${luckValue} poin  (x${newMulti})`;
+    badge.style.display = 'inline-block';
+  } else {
+    badge.style.display = 'none';
+  }
 
-  if (isLuck) updateLuck(prize.value);
-  if (isSamsung) launchConfetti();
+  document.getElementById('popPhone').style.display = isSam ? 'flex' : 'none';
+  document.getElementById('btnDl').style.display    = isSam ? 'inline-block' : 'none';
+
+  if(isSam) launchConfetti();
+
+  document.getElementById('popOverlay').classList.add('active');
 }
 
-function closePopup() {
-  document.getElementById('popupOverlay').classList.remove('active');
-  document.querySelectorAll('.prize-card').forEach(c => c.classList.remove('winner', 'highlight'));
+function closePopup(){
+  document.getElementById('popOverlay').classList.remove('active');
+  nodeEls.forEach(n=>n.classList.remove('winner','hl'));
   isSpinning = false;
   document.getElementById('spinBtn').disabled = false;
 }
 
-// ===== DOWNLOAD PHONE IMAGE =====
-function downloadPhone() {
-  // Generate a canvas placeholder image for Samsung A17
-  const canvas = document.createElement('canvas');
-  canvas.width = 400; canvas.height = 700;
-  const ctx = canvas.getContext('2d');
-
-  // Background
-  const grad = ctx.createLinearGradient(0,0,400,700);
-  grad.addColorStop(0,'#1428a0');
-  grad.addColorStop(1,'#0d1e6e');
-  ctx.fillStyle = grad;
-  ctx.roundRect(0,0,400,700,40);
-  ctx.fill();
-
-  // Phone border
-  ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-  ctx.lineWidth = 6;
-  ctx.roundRect(20,20,360,660,30);
-  ctx.stroke();
-
-  // Screen
-  ctx.fillStyle = '#0a0a1a';
-  ctx.roundRect(40,80,320,500,20);
-  ctx.fill();
-
-  // Screen content
-  ctx.fillStyle = 'rgba(20,40,160,0.5)';
-  ctx.roundRect(40,80,320,500,20);
-  ctx.fill();
-
-  // Emoji phone
-  ctx.font = '120px serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('📱', 200, 370);
-
-  // Brand text
-  ctx.fillStyle = 'white';
-  ctx.font = 'bold 36px Arial';
-  ctx.fillText('SAMSUNG', 200, 620);
-  ctx.font = '24px Arial';
-  ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  ctx.fillText('Galaxy A17', 200, 655);
-
-  // Camera
-  ctx.fillStyle = 'rgba(255,255,255,0.15)';
-  ctx.beginPath(); ctx.arc(200, 50, 12, 0, Math.PI*2); ctx.fill();
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
-  ctx.beginPath(); ctx.arc(200, 50, 6, 0, Math.PI*2); ctx.fill();
-
-  const link = document.createElement('a');
-  link.download = 'Samsung_Galaxy_A17_THR.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+/* ─── DOWNLOAD PHONE ─── */
+function downloadPhone(){
+  const c=document.createElement('canvas');c.width=400;c.height=700;
+  const x=c.getContext('2d');
+  const g=x.createLinearGradient(0,0,400,700);g.addColorStop(0,'#1428a0');g.addColorStop(1,'#060c4a');
+  x.fillStyle=g;x.beginPath();x.roundRect(0,0,400,700,44);x.fill();
+  x.strokeStyle='rgba(255,255,255,.22)';x.lineWidth=5;x.beginPath();x.roundRect(12,12,376,676,36);x.stroke();
+  x.fillStyle='#05080f';x.beginPath();x.roundRect(30,80,340,520,20);x.fill();
+  const sg=x.createLinearGradient(30,80,30,600);sg.addColorStop(0,'rgba(20,40,160,.45)');sg.addColorStop(1,'rgba(4,6,30,.8)');
+  x.fillStyle=sg;x.beginPath();x.roundRect(30,80,340,520,20);x.fill();
+  x.font='130px serif';x.textAlign='center';x.fillText('📱',200,385);
+  x.fillStyle='#fff';x.font='bold 34px Arial';x.fillText('SAMSUNG',200,620);
+  x.fillStyle='rgba(255,255,255,.6)';x.font='22px Arial';x.fillText('Galaxy A17',200,655);
+  x.fillStyle='rgba(255,255,255,.16)';x.beginPath();x.arc(200,48,14,0,Math.PI*2);x.fill();
+  x.fillStyle='rgba(255,255,255,.48)';x.beginPath();x.arc(200,48,7,0,Math.PI*2);x.fill();
+  x.fillStyle='#090c20';x.beginPath();x.arc(200,48,4,0,Math.PI*2);x.fill();
+  x.fillStyle='rgba(255,255,255,.28)';x.beginPath();x.roundRect(148,670,104,6,5);x.fill();
+  const a=document.createElement('a');a.download='Samsung_Galaxy_A17.png';a.href=c.toDataURL('image/png');a.click();
 }
 
-// ===== CONFETTI =====
-function launchConfetti() {
-  const container = document.getElementById('confettiContainer');
-  const colors = ['#f5c518','#27ae60','#e74c3c','#3498db','#e67e22','#9b59b6','#fff'];
-  for (let i = 0; i < 60; i++) {
-    const piece = document.createElement('div');
-    piece.className = 'confetti-piece';
-    piece.style.left = Math.random() * 100 + 'vw';
-    piece.style.top = '-10px';
-    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-    piece.style.width = (6 + Math.random() * 8) + 'px';
-    piece.style.height = (6 + Math.random() * 8) + 'px';
-    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    piece.style.animationDuration = (1.5 + Math.random() * 2) + 's';
-    piece.style.animationDelay = (Math.random() * 0.8) + 's';
-    container.appendChild(piece);
-    setTimeout(() => piece.remove(), 4000);
+/* ─── CONFETTI ─── */
+function launchConfetti(){
+  const box=document.getElementById('cfBox');
+  const cols=['#f5c518','#25a050','#e74c3c','#3498db','#e67e22','#9b59b6','#fff','#4dd878'];
+  for(let i=0;i<80;i++){
+    const el=document.createElement('div');el.className='cf';
+    const s=6+Math.random()*10;
+    el.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;background:${cols[i%cols.length]};border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${1.6+Math.random()*2.2}s;animation-delay:${Math.random()*.9}s;`;
+    box.appendChild(el);
+    setTimeout(()=>el.remove(),4500);
   }
 }
 </script>

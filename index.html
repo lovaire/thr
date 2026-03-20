@@ -205,9 +205,10 @@ body::before{
   background:linear-gradient(145deg,rgba(26,107,53,.92),rgba(7,31,14,.96));
   box-shadow:0 4px 16px rgba(0,0,0,.45);
   overflow:hidden;transition:box-shadow .12s;
+  font-size: 14px;
 }
-.prize-node .pn-icon{font-size:1.3em;line-height:1;z-index:1;}
-.prize-node .pn-lbl{font-size:.46em;font-weight:900;color:var(--gold-lt);text-align:center;z-index:1;line-height:1.15;margin-top:.18em;padding:0 .3em;}
+.prize-node .pn-icon{font-size:1.1em;line-height:1;z-index:1;}
+.prize-node .pn-lbl{font-size:.55em;font-weight:900;color:var(--gold-lt);text-align:center;z-index:1;line-height:1.2;margin-top:.18em;padding:0 .3em;}
 
 /* Type colours */
 .prize-node[data-type="luck1"]  {border-color:rgba(37,160,80,.55);}
@@ -516,7 +517,7 @@ function buildCircle(){
     el.className    = 'prize-node';
     el.dataset.type = p.type;
     el.dataset.idx  = i;
-    el.style.cssText = `width:${node}px;height:${node}px;left:${x}px;top:${y}px;transform:translate(-50%,-50%);font-size:${node}px;`;
+    el.style.cssText = `width:${node}px;height:${node}px;left:${x}px;top:${y}px;transform:translate(-50%,-50%);`;
 
     const lines = p.label.split('\n');
     el.innerHTML = `<span class="pn-icon">${p.icon}</span><span class="pn-lbl">${lines.join('<br>')}</span>`;
